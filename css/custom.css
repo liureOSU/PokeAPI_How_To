@@ -1,0 +1,56 @@
+body {
+ background-image: url(/images/eeveeBackground.jpg);
+}
+
+h2, h1{
+    font-family: "Book Antiqua", Garamond, sans-serif;
+}
+
+#thisNewRow {
+    background-color: sandybrown;
+}
+
+.footer {
+    font-family: Garamond,sans-serif;
+    font-size: 17px;
+}
+
+.navbar {
+    line-height: 3;
+    font-family: Garamond,sans-serif;
+    font-weight: 900;
+    align-content: center;
+    font-size: 19px;
+    color: red;
+    background-color:black;
+}
+
+.dropdown {
+    color: black;
+    font-family: Garamond, Helvetica, sans-serif;
+}
+
+.nav.navbar-nav li a {
+    color: sandybrown;
+    font-family: "Book Antiqua", Garamond, Helvetica, sans-serif;
+    font-size: 17px;
+ }
+.jumbotron {
+    font-family: Garamond, Helvetica, sans-serif;
+    
+}
+
+.well {
+    font-family: Garamond, sans-serif;
+    font-size: 22px;
+}
+
+legend {
+    font-family: Garamond, sans-serif;
+    font-size: 22px;
+}
+
+code {
+    font-family: Consolas;
+    color: blue;
+}
