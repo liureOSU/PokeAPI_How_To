@@ -22,7 +22,7 @@ function pokemonAPI() {
     }
     
     console.log("Proceeding with Pokedex Request");
-    var address = "http://pokeapi.co/api/v2/pokemon-species/";
+    var address = "https://pokeapi.co/api/v2/pokemon-species/";
     var pokemonName = doc.getElementById('pokemonName').value.toLowerCase();
     
     var req = new XMLHttpRequest();
@@ -82,7 +82,7 @@ function pokemonAPI() {
 function pokemon2API() {  
                 
     console.log("Proceeding with Pokedex-2 Request");
-    var address = "http://pokeapi.co/api/v2/pokemon/";
+    var address = "https://pokeapi.co/api/v2/pokemon/";
     var pokemonName = doc.getElementById('pokemonName').value.toLowerCase();
     
     var req = new XMLHttpRequest();
