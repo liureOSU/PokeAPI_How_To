@@ -61,24 +61,61 @@
       
       <div class = "container">
       <div class="jumbotron">
-            <h1>Dynamic Pokédex How-To</h1>
-          <h2>A web-based app based on the <a href=https://pokeapi.co>PokéAPI.</a></h2>
+            <h1>Reading the Response</h1>
+            <h2>A JSON response can easily be used to populate a dynamic webpage.</h2>
       </div>
-
-      <div class="well">      
-            <p>The purpose of this guide is to give you a step-by-step tutorial on how to create a dynamic Pokédex using the PokéAPI.  This tutorial is organized into the following sections:</p>
-            
-            <ul>
-                <li>Getting Started - An introduction to the PokéAPI.</li>
-                <li>Making an API Request - Learn how to use AJAX to call PokéAPI methods.</li>
-                <li>JSON Response - Learn how to read and parse GET responses in JSON format.</li>
-                <li>Putting It All Together - Use HTML, CSS and JS to put together your own Pokédex. </li>
-                <li>Demo: Dynamic Pokedex - A sample Pokédex using the code in this tutorial.</li>
-            </ul>
+      <div class="well">
+            <h2>Using Information from the Response</h2>
+          <p>Let's take another look at the example response.  Recall that this is the response received after using the <code>../pokemon-species/eevee</code> method of the API. <p></p>
+          <iframe width="100%" height="300" src="//jsfiddle.net/liure/524Lgr0c/2/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><p></p>
+          In order to populate our web-based Pokédex, we will need to decide which pieces of information we'll need to extract from this response block.  Although you can personally choose
+          to display any of these results, for the purposes of this demo we will be extracting the following: <code>name, number, genus, description, and type</code>.  Furthermore, we will append an
+          image of the Pokémon to our Pokédex entry.</p>
+          <p>Let's do an example.  Let's say we want to extract the <code>name</code> object from the JSON response.  Now, the members of the response may be either single-entries or an array of values. 
+          The <code>name</code> member is an array because the Pokémon has a different name depending on the langauge setting of the game.  In any case, the Pokémon's English name is always in 
+          the <code>names</code> array at index 0.  Within <code>names[0]</code>, we must access the <code>name</code> member to obtain the text entry of the Pokémon's name. Thus, if we were to create
+          a variable that carries all the response information, <code>var response</code>, then we can access the name of the Pokémon by calling: <code>response.names[0].name</code>  In the demo Pokédex this
+          is exactly what we do.</p>
           
-            <p>Use the navigation bar above and get started!</p>
       </div>
+      <div class="well">
+           <h2>Demo Code Walkthrough</h2>  
+          <p>Let's take a look at another section of our example code:<p></p><script async src="//jsfiddle.net/liure/qp31093j/2/embed/js,html/"></script><p></p>
+          In the JavaScript block beginning with <code>req.onload = function()</code>, we are able to see the rest of the AJAX call.  On a successful function call, this code uses DOM to dynamically generate new <code>td</code>
+          elements within a predesignated HTML table which are populated with the Pokémon's data entries. </p>
+          
+          <p>Let's examine the code line starting with <code>var matrix2 = doc.createElement('td')</code>. This code obtains the Pokémon's name from the JSON response, like the example above, and displays it
+          in a dynamically generated table data entry.  In this case, <code>matrix2</code> holds the Pokémon's name.  In this code, the following data are added into our dynamic table:
+              <ol>
+                  <li><code>matrix1</code>: Contains the Pokémon's National Dex number.</li>
+                  <li><code>matrix2</code>: Contains the Pokémon's name.</li>
+                  <li><code>matrix3</code>: Contains the Pokémon's genus.</li>
+                  <li><code>matrix4</code>: Contains the Pokémon's in-game description.</li>
+              </ol>
+          </p>
+          <p>Note that we are missing two data fields that are necessary for our demo Pokédex.  These are the Pokémon's <code>type</code> and an image of the Pokémon.  The reason why these are missing is because
+              the <code>../pokemon-species</code> method does not contain this information.  Thus, we need to make a <b>second API call</b> in order to obtain this data and complete our Pokédex.  Note that during a successful API call, the last line of code in the function is to call <code>pokemon2API();</code>.
+          </p>
       </div>
+      <div class="well">
+           <h2>Making a Second API Call</h2>  
+          <p>Here's the code for <code>pokemon2API()</code>:<p></p><script async src="//jsfiddle.net/liure/ntcv7tyz/embed/js/"></script><p></p>
+          You'll notice that the basic structure for ths second call is the same as the first.  However, in this call we are using <code>var address = "http://pokeapi.co/api/v2/pokemon/</code> - the <code>pokemon</code>
+          method instead of the <code>pokemon-species</code> method. The <code>pokemon</code> method includes information about the Pokémon's typing, and also includes the address of its image location.  Using this second function, we then append two more columns to our table.  The first, <code>matrix5</code>, gets the Pokémon's type and displays it in a table column.  Some Pokémon have two types instead of one, and we use the
+          <code>isDoubleTyped</code> boolean to determine what our text output should look like.  The second column, <code>matrix6</code>, takes the address of the Pokémon's front-facing normal picture and displays it to the table.
+          </p>
+      </div>
+      <div class="well">
+          <h2>What's Next?</h2>
+          <p>We've learned how to make GET requests to the PokéAPI and how to obtain information from the JSON responses we receive.  With this information, now we can finally set up and start using
+          our web-based dynamic Pokédex!</p>
+      </div>
+      
+      </div>
+          
+          
+          
+          
       <div class="footer">
       <div class="container">
             <ul class="pager">

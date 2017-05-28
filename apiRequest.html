@@ -63,9 +63,17 @@
       <div class = "container">
       <div class="jumbotron">
             <h1>API Requests</h1>
-            <h2>AJAX lets us quickly and efficiently make GET requests to the PokéAPI server.</h2>
+            <h2>Let's quickly and efficiently make GET requests to the PokéAPI server.</h2>
       </div>
 
+      <div class="well">
+          <h2>PokéAPI's Request Format</h2>
+          <p>Unlike other APIs, the PokéAPI does not require a security token or key of any sort.  The API is free to use for any user, with the only restriction being that only 500 calls can be made per day
+              on a single database entry per IP address.  Note also that PokéAPI only allows GET requests.</p>
+          <p>PokéAPI contains many different methods, a list of which can be found <a href="https://pokeapi.co/docsv2/">here.</a>  The format of a PokéAPI request looks like this: <code>
+              http://pokeapi.co/api/v2/pokemon-species/eevee</code>.  In this call, we are using version 2 of the API, containing information up to the 7th Generation of Pokémon games.  The specific method we are using is the <code>pokemon-species</code> method, which contains many useful information about each species.  The specific species we are looking at is the Pokémon Eevee. PokéAPI also allows calls based on
+              the Pokémon's National Dex number.  Therefore, I could reach the same page by accessing <code>http://pokeapi.co/api/v2/pokemon-species/133</code></p>
+      </div>
       <div class="well">
           <h2>Demo Code Walkthrough</h2>
           <p>Let's focus now on the GET request portion of the demo Pokédex code. <p></p> <script async src="//jsfiddle.net/liure/dwofss2y/1/embed/js,html/"></script> <p></p> Let's look at the HTML code. 
@@ -76,13 +84,20 @@
           </p>
           <p>In the JavaScript code, we see two functions: <code>bindButtons()</code>, which on page load tells the <code>pokeSubmit</code> button to call the second function, <code>pokemonAPI()</code>.
           The first code block in this function clears the screen whenever a new request is sent, the second code block defines the specific method we will use for this function, <code>http://pokeapi.co/api/v2/pokemon-species/</code> The third code block defines an asynchronous GET request using AJAX, and sends the user's input in <code>pokemonName</code> along with the <code>address</code> to the PokéAPI server.</p>
+          <p>By sending this code segment to the PokéAPI server, the server will respond with a JSON format response which will look like the response from the previous example.</p>
       </div>
+      <div class="well">
+          <h2>What's Next?</h2>
+          <p>How that we have the basics of the GET request down, we will look at what we need tqo do in order to read and process the server's JSON response.  We will continue to look at the demo code for this site's
+          example Pokédex.</p>
+      </div>
+
           
       </div>
       <div class="footer">
       <div class="container">
             <ul class="pager">
-                <li class='next'><a class='pagerButtons' href='/jsonResponse.html'>JSON Responses &rarr;</a></li>
+                <li class='next'><a class='pagerButtons' href='jsonResponse.html'>JSON Responses &rarr;</a></li>
             </ul>
       </div>
             <p class="text-center">Copyright &copy; Reed N. Liu -- 2017</p>
